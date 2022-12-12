@@ -1,0 +1,11 @@
+for (dim: SPACE_DIMENSIONS) {
+  template class BCGeometry<dim, types::DoubleType>;
+  template class BCFunctionBase<dim, types::DoubleType>;
+  template class BCFunction<dim, types::DoubleType>;
+  template class PeriodicBCFunction<dim, types::DoubleType>;
+  template class BCBookKeeper<dim, types::DoubleType>;
+  
+  template class bc::LidDrivenCavity<dim, types::DoubleType>;
+  template class bc::LinearSimpleShear<dim, types::DoubleType>;
+  template class bc::MidOceanRift<dim, types::DoubleType>;
+}

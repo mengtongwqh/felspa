@@ -1,0 +1,18 @@
+for (dim : SPACE_DIMENSIONS; number : REAL_SCALARS) {
+  // template class LinearSystemBase <
+  //     dim, dealii::SparsityPattern,
+  //     dealii::SparseMatrix<number>,
+  //     dealii::Vector<number>
+  //   >;
+
+  // template class LinearSystemBase<
+  //     dim,
+  //     dealii::BlockSparsityPattern,
+  //     dealii::BlockSparseMatrix<number>,
+  //     dealii::BlockVector<number>
+  //   >;
+
+  template class LinearSystem<dim, number>;
+  template class BlockLinearSystem<dim, number>;
+}
+

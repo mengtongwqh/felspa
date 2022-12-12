@@ -1,0 +1,3 @@
+for (dim : SPACE_DIMENSIONS) {
+  template class ls::LevelSetSurface<dg::AdvectSimulator<dim>, dg::ReinitSimulator<dim>>;
+}

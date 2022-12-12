@@ -1,0 +1,10 @@
+/* confined to double because Meshworker::LocalIntegrator */
+/* does not allow anything other than double */
+
+for (dim : SPACE_DIMENSIONS) {
+  template class dg::AdvectAssembler<AssemblyFramework::meshworker,
+                                     TensorFunction<1, dim>>;
+  template class dg::AdvectAssembler<AssemblyFramework::workstream,
+                                     TensorFunction<1, dim>>;
+  template class dg::AdvectSimulator<dim, double>;
+}

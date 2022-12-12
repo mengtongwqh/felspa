@@ -1,0 +1,36 @@
+
+// booleans
+BOOL            := { true; false }
+
+// real scalar floating point types
+REAL_SCALARS    := { double; float }
+
+// all supported logical dimensions
+DIMENSIONS := { 1; 2; 3 }
+
+// all supported output dimensions
+OUTPUT_DIMENSIONS := { 0; 1; 2; 3 }
+
+// all supported spatial dimensions
+SPACE_DIMENSIONS := { 1; 2; 3 }
+
+// all ranks used for instantiating tensors
+RANKS := { 1; 2; 3; 4 }
+
+// all ranks used for instantiating symmetric tensors
+SYM_RANKS := { 2; 4 }
+
+TEMPO_ORDER := { 1; 2; 3 }
+
+VECTOR_TYPES := 
+{ dealii::Vector<double>;
+  dealii::Vector<float>;
+  dealii::BlockVector<double>;
+  dealii::BlockVector<float>
+}
+
+LINSYS_TYPES := {LinearSystem; BlockLinearSystem; internal::LinearSystemAdvectDG}
+
+FE_TYPES := { dealii::FE_DGQ; dealii::FE_Q }
+
+MAPPING_TYPES := {dealii::MappingQGeneric}

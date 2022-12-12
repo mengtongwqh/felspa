@@ -1,0 +1,88 @@
+#ifndef _FELSPA_BASE_FELSPA_CONFIG_H_
+#define _FELSPA_BASE_FELSPA_CONFIG_H_
+
+
+/** Namespace Decalarations */
+#define FELSPA_NAMESPACE felspa
+#define FELSPA_NAMESPACE_OPEN \
+  namespace felspa            \
+  {
+#define FELSPA_NAMESPACE_CLOSE }
+
+#define FELSPA_DEPRECATED [[deprecated]]
+
+
+/// \name Configurations
+//@{
+/**
+ * Version Number.
+ * Passed in from CMake.
+ */
+#define FELSPA_VERSION_MAJOR @FELSPA_VERSION_MAJOR@
+#define FELSPA_VERSION_MINOR @FELSPA_VERSION_MINOR@
+#define FELSPA_VERSION_PATCH @FELSPA_VERSION_PATCH@
+#define FELSPA_VERSION_STRING @FELSPA_VERSION_STRING@
+#define FELSPA_VERSION_NUMERIC @FELSPA_VERSION_NUMERIC@
+
+#cmakedefine FELSPA_CXX_PARALLEL_ALGORITHM
+
+/** FELSPA DEPENDENT LIBS */
+#cmakedefine FELSPA_HAS_BOOST_STACKTRACE
+#cmakedefine FELSPA_HAS_DL
+#cmakedefine FELSPA_HAS_DEAL_II
+#cmakedefine FELSPA_HAS_MPI
+#cmakedefine FELSPA_HAS_ADDR2LINE
+#cmakedefine FELSPA_HAS_LIBBACKTRACE
+//@}
+
+
+#ifdef FELSPA_HAS_DEAL_II
+#include <deal.II/base/config.h>
+
+#define FELSPA_DEAL_II_VERSION_MAJOR @DEAL_II_VERSION_MAJOR@
+#define FELSPA_DEAL_II_VERSION_MINOR @DEAL_II_VERSION_MINOR@
+#define FELSPA_DEAL_II_VERSION_SUBMINOR @DEAL_II_VERSION_SUBMINOR@
+
+#define FELSPA_DEAL_II_VERSION_GTE(major, minor, subminor)                   \
+  ((FELSPA_DEAL_II_VERSION_MAJOR * 10000 +                                   \
+    FELSPA_DEAL_II_VERSION_MINOR * 100 + FELSPA_DEAL_II_VERSION_SUBMINOR) >= \
+   (major)*10000 + (minor)*100 + (subminor))
+
+#if !(FELSPA_DEAL_II_VERSION_GTE(9, 3, 0))
+#include <deal.II/base/quadrature_lib.h>
+namespace dealii
+{
+  template <int dim>
+  using QTrapezoid = QTrapez<dim>;
+}
+#endif
+
+#endif  // FELSPA_HAS_DEAL_II //
+
+
+#ifdef FELSPA_HAS_MPI
+#include <mpi.h>
+#endif  // FELSPA_HAS_MPI
+
+
+/** \name Global MACROS */
+//@{
+#ifndef FELSPA_FORCE_INLINE
+#if defined(__GNUC__)
+#define FELSPA_FORCE_INLINE __attribute__((always_inline)) inline
+#elif defined(__INTEL_COMPILER)
+#define FELSPA_FORCE_INLINE __forceinline
+#else
+#define FELSPA_FORCE_INLINE inline
+#endif
+#endif  // IAJA_INLINE //
+
+
+/**
+ * Declare a variable as unused.
+ * So as to silence warning from the compiler.
+ */
+#define UNUSED_VARIABLE(var) (void)(var)
+//@}
+
+#endif  //_FELSPA_BASE_FELSPA_CONFIG_H_

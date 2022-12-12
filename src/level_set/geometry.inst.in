@@ -1,0 +1,15 @@
+for (dim : DIMENSIONS) {
+  template class ls::ICBase<dim>;
+  template class ls::ICBinaryOp<dim>;
+  template class ls::ICUnion<dim>;
+  template class ls::ICDiff<dim>;
+  template class ls::ICIntersect<dim>;
+
+  template class ls::HyperSphere<dim>;
+  template class ls::HyperRectangleBase<dim>;
+  template class ls::HyperRectangle<dim>;
+  template class ls::Step<dim>;
+  template class ls::CosineCone<dim>;
+  template class ls::SmoothPerturbedSphere<dim>;
+  template class ls::CosineTensorProduct<dim>;
+}

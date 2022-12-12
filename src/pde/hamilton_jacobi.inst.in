@@ -1,0 +1,9 @@
+/* confined to double because Meshworker::LocalIntegrator */
+/* does not allow anything other than double */
+
+for (dim : SPACE_DIMENSIONS) {
+  template class dg::HJOperator<dim, double>;
+  template class dg::HJSimulator<dim, double>;
+  template class dg::internal::HJAssemblerWorkStream<dim, double>;
+}
+

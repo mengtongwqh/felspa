@@ -1,0 +1,27 @@
+/* confined to double because Meshworker::LocalIntegrator */
+/* does not allow anything other than double */
+
+for (dim : SPACE_DIMENSIONS) {
+  template class dg::LDGGradientLinearSystem<dim, double>;
+  template class dg::LDGAssemblerControl<dim, double>;
+  template class dg::LDGDiffusionTerm<dim, double>;
+
+  template class dg::internal ::meshworker::LDGGradientAssembler<
+    dg::DGLinearSystem<dim, double>>::Integrator<dg::LDGFluxEnum::internal>;
+  template class dg::internal ::meshworker::LDGGradientAssembler<
+    dg::DGLinearSystem<dim, double>>::Integrator<dg::LDGFluxEnum::left>;
+  template class dg::internal ::meshworker::LDGGradientAssembler<
+    dg::DGLinearSystem<dim, double>>::Integrator<dg::LDGFluxEnum::right>;
+  template class dg::internal ::meshworker::LDGGradientAssembler<
+    dg::DGLinearSystem<dim, double>>::Integrator<dg::LDGFluxEnum::alternating>;
+  template class dg::internal ::meshworker::LDGGradientAssembler<
+    dg::LDGGradientLinearSystem<dim, double>>;
+
+
+  template class dg::internal ::meshworker::LDGDiffusionAssembler<
+    dg::DGLinearSystem<dim, double>>::Integrator<dg::LDGFluxEnum::external>;
+  template class dg::internal ::meshworker::LDGDiffusionAssembler<
+    dg::DGLinearSystem<dim, double>>::Integrator<dg::LDGFluxEnum::alternating>;
+  template class dg::internal ::meshworker::LDGDiffusionAssembler<
+    dg::DGLinearSystem<dim, double>>;
+}

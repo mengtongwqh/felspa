@@ -1,0 +1,27 @@
+
+# append FELSPA_LIBRARIES with the so
+set(libprefix "lib")
+set(libsuffix "${FELSPA_${FELSPA_BUILD_TYPE}_SUFFIX}.so")
+set(libname
+  "${FELSPA_INSTALL_LIBRARY_DIR}/${libprefix}${FELSPA_PROJECT_NAME}${libsuffix}")
+
+list(APPEND FELSPA_LINKED_LIBRARIES ${libname})
+list(APPEND FELSPA_INCLUDE_DIRS ${FELSPA_INSTALL_INCLUDE_DIR})
+
+configure_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/${FELSPA_PROJECT_NAME}Config.cmake
+  @ONLY)
+
+configure_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/ConfigVersion.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/${FELSPA_PROJECT_NAME}ConfigVersion.cmake
+  @ONLY)
+
+INSTALL(FILES
+  ${CMAKE_CURRENT_BINARY_DIR}/${FELSPA_PROJECT_NAME}Config.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/${FELSPA_PROJECT_NAME}ConfigVersion.cmake
+  DESTINATION ${FELSPA_PROJCONFIG_REL_DIR}
+  COMPONENT library)
+
+

@@ -1,0 +1,4 @@
+for (number : REAL_SCALARS) {
+  template class TempoControl<number>;
+  template class TempoIntegrator<number>;
+}

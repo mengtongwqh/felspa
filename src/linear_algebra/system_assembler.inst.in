@@ -1,0 +1,4 @@
+for (dim: SPACE_DIMENSIONS) {
+  template class FEFunctionSelector<dim, dim, double>;
+}
+

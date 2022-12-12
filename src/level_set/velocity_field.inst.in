@@ -1,0 +1,5 @@
+for ( dim : DIMENSIONS ) { 
+  template class ls::RigidBodyTranslation<dim>;
+  template class ls::RigidBodyRotation<dim>;
+  template class ls::SingleVortex<dim>;
+}
